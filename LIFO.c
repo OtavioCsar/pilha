@@ -1,4 +1,4 @@
-#include "fila.h"
+#include "pilha.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -31,16 +31,16 @@ int desempilhar()
 {
     int valor;
     if (vazia() == 0) {
-        for (int i = 0; i < ultimaPosicao - 1; i++) {
-            fila[i] = fila[i + 1];
+        for (int i = 0; i < TAM_FILA; i++) {
+            fila[i] = 0;
+            if (i + 1 < TAM_FILA && fila[i + 1]) {
+                fila[i] = fila[i + 1];
+            }
         }
+        ultimaPosicao--;
+    } else {
+        printf("Não foi possivel desenfileirar item. Lista vazia!");
     }
-    ultimaPosicao--;
-}
-else
-{
-    printf("Não foi possivel desempilhar item. Lista vazia!");
-}
 }
 
 int vazia()
